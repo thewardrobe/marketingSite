@@ -12,6 +12,10 @@ Outfit recommendation app according to *your* wardrobe.
 ## Development
 
 ### Setup
+- Install Redis
+  ```
+  brew install redis
+  ```
 - Install [Postgres.app](http://postgresapp.com/)
 - Run Postgres.app
 - Create virtual environment for Python dependencies:
@@ -28,6 +32,7 @@ Outfit recommendation app according to *your* wardrobe.
 
 ### Running
 ```
+redis-server
 python run.py
 ``` 
 
