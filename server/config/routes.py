@@ -1,6 +1,7 @@
 from flask import request, jsonify
 from ..db import db
 from ..models.users import User
+from ..controllers.sessionController import *
 import json
 
 def router(app):
@@ -14,35 +15,43 @@ def router(app):
   def signup():
     if (request.method == 'POST'):
       data = json.loads(request.data)
-      
+      username = data['username']
+      password = data['password']
+
       userObj = {
-        'isTaken': True
+        'isTaken': True,
+        'sid': None
       }
 
-      userExists = User.query.filter_by(username=data['username']).first()
+      userExists = User.query.filter_by(username=username).first()
       if(not bool(userExists)):
-        user = User(data['username'], data['password'])
+        user = User(username, password)
         db.session.add(user)
         db.session.commit()
         userObj['isTaken'] = False
+        userObj['sid'] = createSession(username)
 
       return jsonify(userObj)
-
+      
   @app.route('/auth/login', methods=['POST'])
   def login():
     if (request.method == 'POST'):
       data = json.loads(request.data)
+      username = data['username']
+      password = data['password']
 
       userObj = {
-        'isValid': False
+        'isValid': True,
+        'sid': None
       }
 
-      user = User.query.filter_by(username=data['username']).first()
+      user = User.query.filter_by(username=username).first()
       if(bool(user)):
-        pw_bytes = data['password'].encode('utf-8')
+        pw_bytes = password.encode('utf-8')
         validPw = user.validatePassword(pw_bytes)
         if(validPw):
           #Also return user networks
           userObj['isValid'] = True
+          userObj['sid'] = createSession(username)
 
       return jsonify(userObj)
