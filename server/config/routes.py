@@ -55,3 +55,11 @@ def router(app):
           userObj['sid'] = createSession(username)
 
       return jsonify(userObj)
+      
+  @app.route('/auth/logout', methods=['POST'])
+  def logout():
+    if (request.method == 'POST'):
+      data = json.loads(request.data)
+      sid = data['sid']
+      destroySession(sid)
+    return 'Successful logout'
