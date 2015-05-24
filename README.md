@@ -7,7 +7,8 @@ Outfit recommendation app according to *your* wardrobe.
   1. [Setup](#setup)
   2. [Installing Dependencies](#installing-dependencies)
   3. [Running in Development](#running)
-2. [Stack](#Stack)
+2. [Stack](#stack)
+3. [API Endpoints](#api-endpoints)
 
 ## Development
 
@@ -47,3 +48,9 @@ python run.py
 - Python
 - PostgreSQL
 - SQLAlchemy
+
+## API Endpoints
+
+- Signup: /auth/signup (POST)
+- Login: /auth/login (POST)
+- Logout: /auth/logout (POST)
