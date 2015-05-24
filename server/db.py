@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 uri_provider = Flask('uri_provider')
 uri_provider.config.update(
-  SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/5432'
+  SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/wardrobe'
 )
 
 db = SQLAlchemy(uri_provider)

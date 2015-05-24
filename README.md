@@ -18,6 +18,11 @@ Outfit recommendation app according to *your* wardrobe.
   ```
 - Install [Postgres.app](http://postgresapp.com/)
 - Run Postgres.app
+- Open psql in command line and create wardrobe database
+  ```
+  CREATE DATABASE wardrobe
+  \c wardrobe
+  ```
 - Create virtual environment for Python dependencies:
   ```
   virtualenv venv
