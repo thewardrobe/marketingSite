@@ -1,0 +1,11 @@
+/node_modules
+/bower_components
+.DS_Store
+TODO.md
+/dist
+npm-debug.log
+*.pyc
+server/*.pyc
+server/*/*.pyc
+/venv
+dump.rdb
